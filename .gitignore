@@ -1,0 +1,6 @@
+**/.DS_Store
+**/Builds
+**/JuceLibraryCode
+**/*.filtergraph
+cli/output.wav
+cli/synth
