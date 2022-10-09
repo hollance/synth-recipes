@@ -54,7 +54,7 @@ Problems with these random generators:
 
 The standard library often only defines the interface of the function, not how it must be implemented. Therefore, you don't know exactly what happens inside the PRNG. This may also vary by platform. Since we want to be 100% in control over what happens on the audio thread, it's better to roll your own random number generator.
 
-If you're using JUCE, the `juce::Random` class is perfectly acceptable. It's based on the same algorithm as `rand48`, so it's fast and produces good enough numbers for most audio tasks. You might want to avoid `nextFloat`, which has a slightly distorted distribution (more about this issue below), but `nextDouble` is fine.
+If you're using JUCE, the `juce::Random` class is perfectly acceptable. It's based on the same algorithm as `rand48`, so it's fast and produces good enough numbers for most audio tasks. Just to be pedantic I should mention that `nextFloat` has a slightly distorted distribution (more about this issue below), although you'd never notice this in an audio context; `nextDouble` is fine.
 
 References:
 
