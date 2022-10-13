@@ -24,6 +24,7 @@ Noise:
 
 - [White noise / random numbers](recipes/white-noise.markdown)
 - [LFSR noise](recipes/lfsr-noise.markdown)
+- [Filtered noise & explosions](recipes/explosions.markdown)
 - Pink noise
 
 👷 This is a work in progress! I'll be adding new content every so often.
