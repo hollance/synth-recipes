@@ -30,6 +30,10 @@ For realtime audio processing, we want a pseudorandom number generator (PRNG) wi
 
 There is a trade-off between speed and quality. For our purposes, we don't need the random numbers to be of the highest possible quality — they just need to be good enough to add some noise into an audio signal. Just be aware that the random number generators shown here are not suitable for tasks where quality does matter, such as cryptography or running Monte Carlo simulations.
 
+Slightly paraphrased from Roth Michaels's talk at ADC22:
+
+> For audio purposes, the *perception* of the random sequence is more important than the statistical properties of the numbers coming out of the random generator.
+
 A note on sequence length: Let's say the PRNG outputs 24-bit integers and has a sequence length of $2^{24}$ steps before it repeats. With a sample rate of 48 kHz, that is about 6 minutes worth of audio, certainly long enough that you won't hear the period of this signal. A 15-bit PRNG, however, has a sequence length of less than one second and this period will become noticeable to the listener.
 
 ## Random number generators from the standard library
@@ -586,7 +590,15 @@ You can also use the system's source of randomness as the initial seed, using C+
 unsigned int seed = std::random_device{}();
 ```
 
-Neither are a good idea to do in the realtime audio callback, but should be fine during initialization.
+None of these are a good idea to do in the realtime audio callback, but should be fine during initialization.
+
+### Random seeds for reproducibility
+
+If reproducibility is important, then setting the initial seed using `time()` or `std::random_device` or the addresses of stdlib functions is not an option. Instead, use a hardcoded seed.
+
+For certain audio plug-ins, it may be common to have multiple instances running at the same time. You may want to give each plug-in instance its own unique random seed. The easiest way to do this is to use an incrementing counter as the seed.
+
+In his ADC22 talk, Roth Michaels gave an example of a reverb plug-in that uses delay lines. To avoid the different plug-in instances from "syncing up" their outputs, which can have undesired audible side effects, it is necessary to jitter the delay times. For this to work, each instance of the plug-in in the session needs to start from a different random seed. It's also important that restoring the session gives each plug-in the same random seed as before, since the session may not always load the plug-ins in the same order.
 
 ## Other methods
 
