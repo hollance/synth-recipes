@@ -1,11 +1,10 @@
 # Sound Synthesis Recipes
 
-> <br>
-> **NOTE:** I've decided to turn this content into a blog instead. Read it here: [audiodev.blog](https://audiodev.blog)
-> <br>
-> <br> (This repo won't be maintained any longer.)
-> <br>
-> <br>
+>  
+> **NOTE:** I've decided to turn this content into a blog instead. Read it here: [audiodev.blog](https://audiodev.blog)  
+>  
+> (This repo won't be maintained any longer.)  
+>  
 
 I've been collecting code snippets of sound synthesis algorithms for a while now. Recently I decided to clean up my notes and organize them a bit better into a handy reference.
 
