@@ -1,5 +1,12 @@
 # Sound Synthesis Recipes
 
+> <br>
+> **NOTE:** I've decided to turn this content into a blog instead. Read it here: [audiodev.blog](https://audiodev.blog)
+> <br>
+> <br> (This repo won't be maintained any longer.)
+> <br>
+> <br>
+
 I've been collecting code snippets of sound synthesis algorithms for a while now. Recently I decided to clean up my notes and organize them a bit better into a handy reference.
 
 The inspiration for this is *The Pocket Handbook of Image Processing Algorithms In C* by Myler & Weeks, a concise guide of algorithms for image processing. I was looking for something similar for audio synthesis but came up empty-handed, so I've started to write my own.
